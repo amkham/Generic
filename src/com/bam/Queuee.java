@@ -5,11 +5,12 @@ import rzp.generics.queue.QueueException;
 import rzp.generics.queue.QueueExtra;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> {
 
-    private List<T> data;
+    private List<T> data= new ArrayList<>();
     private int maxSize = -1;
 
     @Override
