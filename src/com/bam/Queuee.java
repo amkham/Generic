@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> {
 
-    private List<T> data= new ArrayList<>();
+    private List<T> data;
     private int maxSize = -1;
 
     @Override
@@ -23,6 +23,7 @@ public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> 
 
     @Override
     public boolean isEmpty() {
+
         return data.isEmpty();
     }
 
@@ -33,7 +34,12 @@ public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> 
 
     @Override
     public int size() {
-        return data.size();
+
+        if (this.data != null)
+        {
+         return data.size();
+        }
+        return 0;
     }
 
     @Override
