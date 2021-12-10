@@ -10,13 +10,14 @@ import java.util.List;
 
 public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> {
 
-    private final List<T> data = new ArrayList<>();
+    private List<T> data = new ArrayList<>();
     private int maxSize = -1;
 
     @Override
     public void init(int maxSize) throws QueueException {
 
         if (this.maxSize >=0) throw new QueueException("Очередь уже инициализирована");
+        this.data = new ArrayList<>();
         this.maxSize = maxSize;
     }
 
@@ -97,9 +98,9 @@ public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> 
     @Override
     public void offer(T[] items) throws QueueException, IllegalStateException {
 
-        if (this.data.size() + items.length > this.maxSize) throw new QueueException("Не хватает места в очереди");
         if (this.maxSize >=0)
         {
+            if (size() + items.length > this.maxSize) throw new QueueException("Не хватает места в очереди");
             for (T item : items)
             {
                 offer(item);
