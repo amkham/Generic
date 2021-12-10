@@ -97,9 +97,15 @@ public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> 
     @Override
     public void offer(T[] items) throws QueueException, IllegalStateException {
 
-        for (T item : items)
+        if (this.data.size() + items.length > this.maxSize) throw new QueueException("Не хватает места в очереди");
+        if (this.maxSize >=0)
         {
-            offer(item);
+            for (T item : items)
+            {
+                offer(item);
+            }
         }
+        else throw new IllegalStateException("Очередь не инициализирована");
+
     }
 }
