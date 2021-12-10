@@ -16,7 +16,7 @@ public class Queuee<T extends Comparable<T>> implements Queue<T>, QueueExtra<T> 
     @Override
     public void init(int maxSize) throws QueueException {
 
-        if (maxSize == -1) throw new QueueException("Очередь уже инициализирована");
+        if (maxSize >=0) throw new QueueException("Очередь уже инициализирована");
         this.maxSize = maxSize;
     }
 
